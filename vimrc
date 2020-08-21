@@ -78,7 +78,6 @@ Plug 'scrooloose/nerdtree'      " nerdtree, nothing to say
 Plug 'junegunn/vim-github-dashboard'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'w0rp/ale'                 " lint
 Plug 'tpope/vim-commentary'
@@ -94,7 +93,7 @@ Plug 'simeji/winresizer'            " window conrol
 Plug 'yuttie/comfortable-motion.vim' " confortable Ctf+F/B
 Plug 'tyru/open-browser.vim'        " serarch in browser
 Plug 'morhetz/gruvbox'      " color scheme
-Plug 'suoto/vim-hdl'
+Plug 'suoto/vim-hdl' " HDL
 Plug 'JamshedVesuna/vim-markdown-preview' " Markdown preview   Ctr+p
 Plug 'tpope/vim-rhubarb'
 call plug#end()

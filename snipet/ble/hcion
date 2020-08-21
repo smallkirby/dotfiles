@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo btmgmt -i 2 power off
+sudo btmgmt -i 2 le on
+sudo btmgmt -i 2 connectable on
+sudo btmgmt -i 2 advertising on
+sudo btmgmt -i 2 power on
