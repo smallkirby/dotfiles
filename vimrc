@@ -16,6 +16,12 @@ set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
+"US配列のため
+nnoremap ; :
+nnoremap : ;
+vnoremap : :
+vnoremap : ;
+
 set cursorline
 set cursorcolumn
 set virtualedit=block,onemore
