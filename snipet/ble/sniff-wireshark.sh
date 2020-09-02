@@ -1,1 +1,1 @@
-sudo ubertooth-btle -f -c /tmp/pipe
+sudo ubertooth-btle -f -q /tmp/pipe
