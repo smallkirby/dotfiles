@@ -1,0 +1,20 @@
+[:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+audible-bell=false
+background-color='rgb(50,48,47)'
+bold-color-same-as-fg=true
+bold-is-bright=true
+cursor-blink-mode='on'
+cursor-colors-set=false
+cursor-shape='underline'
+custom-command='tmux'
+default-size-columns=90
+default-size-rows=30
+foreground-color='rgb(235,219,178)'
+highlight-colors-set=false
+palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(132,168,127)', 'rgb(190,27,217)', 'rgb(132,168,127)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(154,171,70)', 'rgb(252,233,79)', 'rgb(132,168,127)', 'rgb(72,104,14)', 'rgb(52,226,226)', 'rgb(238,238,236)']
+preserve-working-directory='safe'
+scrollback-lines=23000
+use-custom-command=true
+use-theme-colors=false
+use-theme-transparency=true
+visible-name='skb-terminal'

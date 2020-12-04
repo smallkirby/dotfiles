@@ -1,0 +1,99 @@
+set fenc=utf-8
+set nobackup
+set writebackup
+set noswapfile
+set autoread
+set hidden
+set showcmd
+
+set wildmenu
+set history=5000
+
+set number
+set relativenumber
+
+" for normal mode. US layout
+nnoremap ; :
+nnoremap : ;
+" for virtual mode. US layout
+vnoremap : ;
+vnoremap ; :
+
+set cursorline
+set cursorcolumn
+set virtualedit=block,onemore
+set noautoindent
+set nosmartindent
+set visualbell
+set showmatch
+set laststatus=2
+set wildmode=longest,list
+
+set expandtab
+set nosmartindent
+set noautoindent
+set shiftround
+let s:tabwidth=2
+exec 'set tabstop=' .s:tabwidth
+exec 'set shiftwidth=' .s:tabwidth
+exec 'set softtabstop=' .s:tabwidth
+
+" search
+set ignorecase
+set smartcase
+set incsearch
+set wrapscan
+set hlsearch
+
+" enable mouse scroll
+if has('mouse')
+  set mouse=a
+  if has('mouse_sgr')
+    set ttymouse=sgr
+  elseif v:version > 703 || v:version is 703 && has('patch632')
+    set ttymouse = sgr
+  else
+    set ttymouse=xterm2
+  endif
+endif
+
+
+" share clipboard
+set clipboard=unnamedplus
+
+" Indent Guide
+" let g:indent_guides_enable_on_vim_startup = 1
+
+
+" vimenter autocmd
+autocmd vimenter * colorscheme gruvbox
+autocmd vimenter * set background=dark
+
+" autocomplete 
+" let g:deoplete#enable_at_startup = 1
+
+" YouCompleteMe
+"  config file is ~/.ycm_extra_conf.py
+let g:ycm_global_ycm_extra_conf = '${HOME}/.ycm_extra_conf.py'
+let g:ycm_auto_trigger = 1
+let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_autoclose_preview_window_after_insertion = 1
+set splitbelow
+
+" PLUGIN
+call plug#begin('~/.vim/plugged')
+Plug 'preservim/nerdtree' 
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'tomasr/molokai'           " status bar
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf.vim'     " fuzzing search
+Plug 'morhetz/gruvbox'      " color scheme
+" Plug 'nathanaelkane/vim-indent-guides'  " visualize indent depth
+Plug 'dense-analysis/ale'
+" Plug 'Shougo/deoplete.nvim' " autocomplete
+" Plug 'roxma/nvim-yarp' " autocomplete
+" Plug 'roxma/vim-hug-neovim-rpc' " autocomplete
+Plug 'Valloric/YouCompleteMe'
+call plug#end()
