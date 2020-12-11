@@ -13,6 +13,7 @@ set number
 set relativenumber
 
 " for normal mode. US layout
+"
 nnoremap ; :
 nnoremap : ;
 " for virtual mode. US layout
