@@ -10,15 +10,20 @@ set wildmenu
 set history=5000
 
 set number
-set relativenumber
+"set relativenumber
 
 " for normal mode. US layout
-"
 nnoremap ; :
 nnoremap : ;
 " for virtual mode. US layout
 vnoremap : ;
 vnoremap ; :
+
+" page forward/back
+let g:BASH_Ctrl_j = 'off'
+let g:BASH_Ctrl_b = 'off'
+nnoremap <C-j> <C-f>
+nnoremap <C-k> <C-b>
 
 set cursorline
 set cursorcolumn
@@ -58,6 +63,15 @@ if has('mouse')
   endif
 endif
 
+" hexedit as vim
+function Hex()
+  %!xxd
+endfunction
+function Text()
+  %!xxd -r
+endfunction
+
+" smart paste from clipboard
 
 " share clipboard
 set clipboard=unnamedplus
