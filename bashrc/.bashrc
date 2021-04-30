@@ -188,3 +188,16 @@ export ECLIPSE_HOME="/snap/eclipse/48"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK.
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# ccache
+export USE_CCACHE=1
+export CCACHE_DIR=$HOME/.ccache
+alias gcc="ccache gcc"
+
+# history share/unshare
+alias s='export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"'
+alias us='export PROMPT_COMMAND=""'
+
+# stap
+STAP_HOME=$HOME/systemtap/build/bin
+alias stap="sudo $STAP_HOME/stap"
