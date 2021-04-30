@@ -201,3 +201,6 @@ alias us='export PROMPT_COMMAND=""'
 # stap
 STAP_HOME=$HOME/systemtap/build/bin
 alias stap="sudo $STAP_HOME/stap"
+
+# lttng
+alias logng="babeltrace2"
