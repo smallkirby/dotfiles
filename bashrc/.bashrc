@@ -206,4 +206,5 @@ alias stap="sudo $STAP_HOME/stap"
 alias logng="babeltrace2"
 
 # dmesg readble time
-alias dmesg="dmesg -T"
+alias dmesg="dmesg -T --color=always"
+alias ddmesg="dmesg -T --color=always | grep -v usb2"
