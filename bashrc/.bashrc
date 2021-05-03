@@ -204,3 +204,6 @@ alias stap="sudo $STAP_HOME/stap"
 
 # lttng
 alias logng="babeltrace2"
+
+# dmesg readble time
+alias dmesg="dmesg -T"
