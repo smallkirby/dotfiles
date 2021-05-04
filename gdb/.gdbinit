@@ -20,16 +20,16 @@ define ii
   x/10i 
 end
 
-define ir
-  pipe -d DE info registers DE tail -n+1 2>/dev/null | head -n20
-end
-
 define hook-stop
-  ir
-  shell echo "-----------------------------------------------"
-  x/10i $rip-0xd
+  shell echo -e '\033[0;36m++++++++++++++++++++++++++++++++++++++++++++++++++++\033[0m'
+  pipe -d DE info registers DE tail -n+1 2>/dev/null | head -n20
+  shell echo -e '\033[0;36m++++++++++++++++++++++++++++++++++++++++++++++++++++\033[0m'
+  pipe -d DE x/20i $rip-0x20 DE grc tail -n+1 | grep ".*=>.*" --color=always -B2 -C0
+  pipe -d DE x/20i $rip-0x20 DE grc tail -n+1 | grep "=>" -A7 | tail -n+2
+  shell echo -e '\033[0;36m++++++++++++++++++++++++++++++++++++++++++++++++++++\033[0m'
+  info line
+  list
 end
-  
 
 #set tui border-kind ascii
 #layout asm
