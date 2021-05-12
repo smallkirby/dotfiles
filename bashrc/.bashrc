@@ -208,3 +208,6 @@ alias logng="babeltrace2"
 # dmesg readble time
 alias dmesg="dmesg -T --color=always"
 alias ddmesg="dmesg -T --color=always | grep -v usb2"
+
+# glances
+alias htop="glances"
