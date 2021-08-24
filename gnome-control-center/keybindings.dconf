@@ -1,0 +1,5 @@
+[/]
+close=['<Primary><Alt>q']
+maximize=['<Primary><Alt>m']
+switch-input-source=['<Primary><Shift>space']
+switch-input-source-backward=['<Primary>space']

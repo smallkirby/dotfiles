@@ -1,0 +1,6 @@
+[/]
+idle-dim=false
+power-button-action='suspend'
+sleep-inactive-ac-timeout=3600
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-type='suspend'

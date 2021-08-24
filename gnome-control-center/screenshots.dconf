@@ -1,0 +1,14 @@
+[/]
+area-screenshot=['<Primary><Alt>grave']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
+screenshot=['<Shift><Alt>asciitilde']
+
+[custom-keybindings/custom0]
+binding='<Primary><Alt>w'
+command='gedit'
+name='gedit'
+
+[custom-keybindings/custom1]
+binding='<Primary><Alt>v'
+command='gnome-terminal -e vim'
+name='vim'
