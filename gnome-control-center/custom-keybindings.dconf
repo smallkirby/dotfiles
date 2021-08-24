@@ -1,9 +1,0 @@
-[custom0]
-binding='<Primary><Alt>w'
-command='gedit'
-name='gedit'
-
-[custom1]
-binding='<Primary><Alt>v'
-command='gnome-terminal -e vim'
-name='vim'
