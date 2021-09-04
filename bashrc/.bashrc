@@ -211,3 +211,6 @@ alias ddmesg="dmesg -T --color=always | grep -v usb2"
 
 # glances
 alias htop="glances"
+
+# objdump
+alias objdump="objdump -M intel"
