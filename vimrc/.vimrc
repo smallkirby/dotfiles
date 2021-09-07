@@ -15,9 +15,12 @@ set number
 " for normal mode. US layout
 nnoremap ; :
 nnoremap : ;
-" for virtual mode. US layout
+" for visual mode. US layout
 vnoremap : ;
 vnoremap ; :
+
+" use blackhole register when copy selection are.
+vmap p "_dP
 
 " page forward/back
 let g:BASH_Ctrl_j = 'off'
@@ -105,10 +108,6 @@ Plug 'tomasr/molokai'           " status bar
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'     " fuzzing search
 Plug 'morhetz/gruvbox'      " color scheme
-" Plug 'nathanaelkane/vim-indent-guides'  " visualize indent depth
 Plug 'dense-analysis/ale'
-" Plug 'Shougo/deoplete.nvim' " autocomplete
-" Plug 'roxma/nvim-yarp' " autocomplete
-" Plug 'roxma/vim-hug-neovim-rpc' " autocomplete
 Plug 'Valloric/YouCompleteMe'
 call plug#end()
