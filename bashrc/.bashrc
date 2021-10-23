@@ -131,6 +131,8 @@ alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
 alias lls='ls -l --color=auto'
 alias ls="ls -a -l --color=auto"
+alias which='which -a'
+
 alias pwndbg="sudo gdb -q -ix $HOME/pwndbg/gdbinit.py"
 alias ngdb="gdb -q -ix $HOME/.gdbinit"
 alias burp="sh $HOME/BurpSuitePro/BurpSuitePro.sh"
