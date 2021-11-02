@@ -10,23 +10,29 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoredups:erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
+HISTSIZE=100000
+HISTFILESIZE=200000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-# If set, the pattern "**" used in a pathname expansion context will # match all files and zero or more directories and subdirectories.
+
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+export SHELL=/usr/bin/bash
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -57,7 +63,7 @@ fi
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]: \[\033[01;35m\]\t \d\[\033[00m\]\n\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\: \t \d\n$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -73,20 +79,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias t="tail -n1"
-    alias h="head -n1"
-    alias c="curl"
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
 fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -112,107 +105,116 @@ if ! shopt -oq posix; then
   fi
 fi
 
+### Alias #############################################
 
-#Go environment
-GOROOT=/usr/local/go
-GOPATH=$HOME/go
-PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+# ls
+alias ls='ls -la --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# grep
+alias grep='grep --color=always'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 
-#Java
-JAVA_HOME=/usr/lib/jvm/default-java
-ANDROID_HOME=$HOME/Android/Sdk
-
-
-
-# Alias
-alias ll='ls -alF --color=auto'
-alias la='ls -A --color=auto'
-alias l='ls -CF --color=auto'
-alias lls='ls -l --color=auto'
-alias ls="ls -a -l --color=auto"
+# format / verbosity
 alias which='which -a'
+alias dmesg="dmesg -T --color=always"
+alias ddmesg="dmesg -T --color=always | grep -v usb2"
+alias objdump="objdump -M intel"
 
-alias pwndbg="sudo gdb -q -ix $HOME/pwndbg/gdbinit.py"
-alias ngdb="gdb -q -ix $HOME/.gdbinit"
-alias burp="sh $HOME/BurpSuitePro/BurpSuitePro.sh"
-alias ghidra="sh /usr/local/ghidra_9.2_PUBLIC/ghidraRun"
-alias astudio="$HOME/android-studio/bin/studio.sh"
-alias rp++="$HOME/rp/rp-lin-x64"
-alias ct="flatpak run com.giuspen.cherrytree"
-alias cherrytree="flatpak run com.giuspen.cherrytree"
-alias 2utf8="sh $HOME/snipet/encode/2utf8.sh"
-alias quartus="$HOME/intelFPGA_lite/20.1/quartus/bin/quartus"
-alias vivado="$HOME/Xilinx/Vivado/2019.2/bin/vivado"
-alias alloy="java -jar $HOME/alloy/alloy4.2_2015-02-22.jar"
-alias peepdf="python2 $HOME/peepdf/peepdf_0.3/peepdf.py"
-alias bettercap="sudo $HOME/bettercap/bettercap -caplet http-ui"
-alias ida="$HOME/idafree-7.0/ida64"
-alias k="pwd | xclip -sel clip"
-alias jwcad="wine ~/.wine/drive_c/JWW/Jw_win.exe"
-alias myip="curl ipinfo.io/ip"
-alias bd="nautilus --browser $(pwd)"
-alias bp="nautilus --browser /home/wataru/Pictures"
-alias mygit="$HOME/git/build/bin/git"
-alias top="htop"
-alias ntop="top"
-alias nikto="$HOME/nikto/program/nikto.pl"
+# pwn
+alias strace="strace -v -s 90"
+alias rp++="rp-lin-x64"
+alias pwndbg="sudo gdb -q -ix $HOME/.gdbinit.pwn"
+alias gdb="gdb -q"
 
+# stap
+STAP_HOME=$HOME/systemtap/build/bin
+alias stap="sudo $STAP_HOME/stap"
+alias sstap="sudo strace $STAP_HOME/stap"
 
+# ghidra
+export GHIDRA_LATEST=ghidra_9.3_DEV
+export GHIDRA_INSTALL_DIR=/usr/local/$GHIDRA_LATEST
+alias ghidra="sh $GHIDRA_INSTALL_DIR/ghidraRun"
 
-export WORKON_HOME=~/virtualenvs
-export QSYS_ROOTDIR="$HOME/intelFPGA_lite/20.1/quartus/sopc_builder/bin"
-export DOCKER_CONFIG=$HOME/.docker
-export PYENV_ROOT="$HOME/.pyenv"
-source /usr/local/bin/virtualenvwrapper.sh
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# jython
+export JYTHON_HOME=$HOME/jython
+alias jython="java -jar $JYTHON_HOME/jython-standalone-2.7.2.jar"
 
-
-export PATH= # CENSORED #
-export GHIDRA_INSTALL_DIR=/usr/local/ghidra_9.1.2_PUBLIC
-export PYTHONSTARTUP=/home/wataru/.pythonstartup
-
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-eval "$(rbenv init -)"
-eval "$(pyenv init -)"
-
-# deopt_tools
-export PATH=$HOME/depot_tools:$PATH
-export PATH=$HOME/v8/out/x64.debug:$PATH
-
-# PATH init
-PATH=$HOME/.cargo/bin:$PATH
-PATH=$HOME/android-studio/bin:$PATH
-PATH=$HOME/JohnTheRipper/run:$PATH
-export ECLIPSE_HOME="/snap/eclipse/48"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK.
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# ccache
-export USE_CCACHE=1
-export CCACHE_DIR=$HOME/.ccache
+# gcc
 alias gcc="ccache gcc"
+alias make='make CC="ccache gcc"'
+
+# journalctl
+alias jlog="journalctl -b --all --catalog --no-pager" # current boot only
+alias jlogall="journalctl --all --catalog --merge --no-pager"
+alias jlogf="journalctl -f"
+alias jlogk="journalctl -b -k --no-pager"
+
+# lttng
+alias logng="babeltrace2"
 
 # history share/unshare
 alias s='export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"'
 alias us='export PROMPT_COMMAND=""'
 
-# stap
-STAP_HOME=$HOME/systemtap/build/bin
-alias stap="sudo $STAP_HOME/stap"
+# nautilus
+alias bd="nautilus --browser $(pwd)"
+alias bp="nautilus --browser $HOME/Pictures"
 
-# lttng
-alias logng="babeltrace2"
+# others
+alias astudio="$HOME/android-studio/bin/studio.sh"
+alias postman="$HOME/Postman/Postman"
+alias tracecompass="$HOME/trace-compass/tracecompass"
+alias xtop="xtop 2>~/xtop-error"
 
-# dmesg readble time
-alias dmesg="dmesg -T --color=always"
-alias ddmesg="dmesg -T --color=always | grep -v usb2"
+### END Alias #############################################
 
-# glances
-alias htop="glances"
 
-# objdump
-alias objdump="objdump -M intel"
+### set up PATH and envvars ###############################
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+# go
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+
+# Android
+export ANDROID_SDK=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK/platform-tools
+
+# jadx
+export PATH=$PATH:$HOME/jadx/build/jadx/bin
+
+# ccache
+PATH=/usr/bin/ccache:$PATH
+export USE_CCACHE=1
+export CCACHE_DIR=$HOME/.ccache
+
+# others
+tmux="TERM=xterm-256color tmux"
+
+### END set up PATH and envvars ###########################
+
+
+### runscripts ############################################
+
+# rbenv
+eval "$(rbenv init -)"
+
+# cargo
+source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
+
+### END runscripts ########################################
+
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
