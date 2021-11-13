@@ -171,6 +171,7 @@ alias astudio="$HOME/android-studio/bin/studio.sh"
 alias postman="$HOME/Postman/Postman"
 alias tracecompass="$HOME/trace-compass/tracecompass"
 alias xtop="xtop 2>~/xtop-error"
+alias less="less -R"
 
 ### END Alias #############################################
 
@@ -217,4 +218,21 @@ source "$HOME/.cargo/env"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+
+: ' ## Tips ##
+
+# LESS
+
+- enable escape-sequence: use `-R` option
+    eg: less -R ./log
+
+- specify command-line option after execution: use `-<option>`
+    eg: -R (inside less)
+
+# MISC
+
+- disable alias and execute: use back-slash
+    eg: \less
+
+'
 
