@@ -197,6 +197,9 @@ PATH=/usr/bin/ccache:$PATH
 export USE_CCACHE=1
 export CCACHE_DIR=$HOME/.ccache
 
+# lysithea
+export PATH=$PATH:$HOME/lysithea
+
 # others
 tmux="TERM=xterm-256color tmux"
 
