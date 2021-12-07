@@ -128,7 +128,8 @@ alias objdump="objdump -M intel"
 # pwn
 alias strace="strace -v -s 90"
 alias rp++="rp-lin-x64"
-alias pwndbg="sudo gdb -q -ix $HOME/.gdbinit.pwn"
+alias upwndbg="gdb -q -nx -ix $HOME/.gdbinit.pwn"
+alias pwndbg="sudo gdb -q -nx -ix $HOME/.gdbinit.pwn"
 alias gdb="gdb -q"
 
 # stap
