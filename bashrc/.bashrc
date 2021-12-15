@@ -167,6 +167,9 @@ alias us='export PROMPT_COMMAND=""'
 alias bd="nautilus --browser $(pwd)"
 alias bp="nautilus --browser $HOME/Pictures"
 
+# terminal
+alias newterm="gnome-terminal --working-directory=$PWD"
+
 # others
 alias astudio="$HOME/android-studio/bin/studio.sh"
 alias postman="$HOME/Postman/Postman"
