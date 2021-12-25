@@ -110,4 +110,5 @@ Plug 'junegunn/fzf.vim'     " fuzzing search
 Plug 'morhetz/gruvbox'      " color scheme
 Plug 'dense-analysis/ale'
 Plug 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-abolish'
 call plug#end()
