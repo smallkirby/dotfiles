@@ -221,6 +221,12 @@ source "$HOME/.cargo/env"
 
 ### END runscripts ########################################
 
+### BASH  #################################################
+
+set -o vi # run bash in vi mode
+
+### END BASH  #############################################
+
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
