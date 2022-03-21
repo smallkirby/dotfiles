@@ -60,8 +60,30 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+function save_state() {
+    export ps1prev=$?
+}
+
+function show_git_branch() {
+    local branch="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/' | sed s'/^ (//g' | sed s'/)$//g')"
+    if [ -z "$branch" ]; then
+        echo -ne "\033[0;35m(nogit)\\e[0m"
+    else
+        echo -ne "\033[0;35m[$branch]\\e[0m"
+    fi
+}
+
+function show_prev_status() {
+    if [ $1 == 0 ]; then
+        echo -ne "\\e[0;92m"
+    else
+        echo -ne "\\e[0;91m"
+    fi
+    echo -ne "<$1>\\e[0m"
+}
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]: \[\033[01;35m\]\t \d\[\033[00m\]\n\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]: \[\033[01;35m\]\t \d\[\033[00m\]: $(save_state; show_git_branch; echo ""; show_prev_status $ps1prev) \$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
