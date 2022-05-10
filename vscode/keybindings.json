@@ -17,7 +17,7 @@
         "command": "-workbench.action.navigateForward"
     },
     {
-        "key": "ctrl+[Quote]",
+        "key": "ctrl+;",
         "command": "editor.action.revealDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
     },
@@ -27,7 +27,7 @@
         "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
     },
     {
-        "key": "ctrl+alt+[Quote]",
+        "key": "ctrl+alt+;",
         "command": "editor.action.revealDefinitionAside",
         "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
     },
@@ -45,16 +45,8 @@
         "command": "-workbench.action.showAllSymbols"
     },
     {
-        "key": "ctrl+l",
-        "command": "workbench.action.nextEditor"
-    },
-    {
         "key": "ctrl+pagedown",
         "command": "-workbench.action.nextEditor"
-    },
-    {
-        "key": "ctrl+h",
-        "command": "workbench.action.previousEditor"
     },
     {
         "key": "ctrl+pageup",
@@ -81,31 +73,229 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+[Semicolon]",
-        "command": "editor.action.revealDeclaration"
-    },
-
-  // オプションメニューのvim bindナビゲーション
-  {
-    "key": "ctrl+j",
-    "command": "selectNextSuggestion",
-    "when": "suggestWidgetVisible"
+    "key": "tab",
+    "command": "-editor.emmet.action.expandAbbreviation",
+    "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorReadonly && !editorTabMovesFocus"
   },
   {
+    "key": "ctrl+alt+f",
+    "command": "references-view.find",
+    "when": "editorHasReferenceProvider"
+  },
+  {
+    "key": "shift+alt+f12",
+    "command": "-references-view.find",
+    "when": "editorHasReferenceProvider"
+},
+{
     "key": "ctrl+k",
-    "command": "selectPrevSuggestion",
-    "when": "suggestWidgetVisible"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
-  },
-  {
+    "command": "-extension.vim_ctrl+k",
+    "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
+},
+{
     "key": "ctrl+k",
-    "command": "workbench.action.quickOpenSelectPrevious",
-    "when": "inQuickOpen"
-  },
+    "command": "editor.foldRecursively",
+    "when": "editorTextFocus && foldingEnabled"
+},
+{
+    "key": "ctrl+k ctrl+[",
+    "command": "-editor.foldRecursively",
+    "when": "editorTextFocus && foldingEnabled"
+},
+{
+    "key": "ctrl+j",
+    "command": "-extension.vim_ctrl+j",
+    "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
+},
+{
+    "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+},
+{
+    "key": "ctrl+k ctrl+]",
+    "command": "-editor.unfoldRecursively",
+    "when": "editorTextFocus && foldingEnabled"
+},
+{
+    "key": "ctrl+k ctrl+0",
+    "command": "-editor.foldAll",
+    "when": "editorTextFocus && foldingEnabled"
+},
+{
+    "key": "ctrl+i",
+    "command": "editor.unfoldAll",
+    "when": "editorTextFocus && foldingEnabled"
+},
+{
+    "key": "ctrl+k ctrl+j",
+    "command": "-editor.unfoldAll",
+    "when": "editorTextFocus && foldingEnabled"
+},
+{
+    "key": "ctrl+f",
+    "command": "-workbench.action.terminal.focusFind",
+    "when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
+},
+{
+    "key": "ctrl+g l",
+    "command": "workbench.action.navigateRight"
+},
+{
+    "key": "ctrl+g h",
+    "command": "workbench.action.navigateLeft"
+},
+{
+    "key": "ctrl+g k",
+    "command": "workbench.action.navigateUp"
+},
+{
+    "key": "ctrl+g j",
+    "command": "workbench.action.navigateDown"
+},
+{
+    "key": "ctrl+g o",
+    "command": "workbench.action.splitEditorRight"
+},
+{
+    "key": "ctrl+g e",
+    "command": "workbench.action.splitEditorDown"
+},
+{
+    "key": "ctrl+g up",
+    "command": "workbench.action.nextEditorInGroup"
+},
+{
+    "key": "ctrl+k ctrl+pagedown",
+    "command": "-workbench.action.nextEditorInGroup"
+},
+{
+    "key": "ctrl+g down",
+    "command": "workbench.action.previousEditorInGroup"
+},
+{
+    "key": "ctrl+k ctrl+pageup",
+    "command": "-workbench.action.previousEditorInGroup"
+},
+{
+    "key": "ctrl+g f",
+    "command": "workbench.action.terminal.focus"
+},
+{
+    "key": "ctrl+g g",
+    "command": "workbench.action.focusActiveEditorGroup"
+},
+{
+    "key": "ctrl+g q",
+    "command": "workbench.action.closeEditorsInGroup"
+},
+{
+    "key": "ctrl+k w",
+    "command": "-workbench.action.closeEditorsInGroup"
+},
+{
+    "key": "ctrl+alt+e",
+    "command": "eslint.executeAutofix"
+},
+{
+    "key": "ctrl+s",
+    "command": "-workbench.action.files.save"
+},
+{
+    "key": "ctrl+s",
+    "command": "-issue.createIssueFromFile",
+    "when": "resourceScheme == 'newIssue' && config.files.autoSave != 'off'"
+},
+{
+    "key": "ctrl+s",
+    "command": "editor.emmet.action.matchTag"
+},
+{
+    "key": "ctrl+e",
+    "command": "-workbench.action.quickOpen"
+},
+{
+    "key": "ctrl+e",
+    "command": "-extension.vim_ctrl+e",
+    "when": "editorTextFocus && vim.active && vim.use<C-e> && !inDebugRepl"
+},
+{
+    "key": "ctrl+e",
+    "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+},
+{
+    "key": "ctrl+alt+e",
+    "command": "editor.action.marker.nextInFiles",
+    "when": "editorFocus"
+},
+{
+    "key": "f8",
+    "command": "-editor.action.marker.nextInFiles",
+    "when": "editorFocus"
+},
+{
+    "key": "ctrl+e",
+    "command": "editor.action.marker.next",
+    "when": "editorFocus"
+},
+{
+    "key": "alt+f8",
+    "command": "-editor.action.marker.next",
+    "when": "editorFocus"
+},
+{
+    "key": "shift+alt+f8",
+    "command": "-editor.action.marker.prev",
+    "when": "editorFocus"
+},
+{
+    "key": "shift+f8",
+    "command": "-editor.action.marker.prevInFiles",
+    "when": "editorFocus"
+},
+{
+    "key": "ctrl+d",
+    "command": "-editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+},
+{
+    "key": "ctrl+d",
+    "command": "-extension.vim_ctrl+d",
+    "when": "editorTextFocus && vim.active && vim.use<C-d> && !inDebugRepl"
+},
+{
+    "key": "ctrl+d",
+    "command": "-list.focusPageDown",
+    "when": "listFocus && !inputFocus"
+},
+{
+    "key": "ctrl+d",
+    "command": "workbench.action.debug.start",
+    "when": "debuggersAvailable && debugState == 'inactive'"
+},
+{
+    "key": "f5",
+    "command": "-workbench.action.debug.start",
+    "when": "debuggersAvailable && debugState == 'inactive'"
+},
+{
+    "key": "ctrl+l alt+j",
+    "command": "-latex-workshop.synctex",
+    "when": "config.latex-workshop.bind.altKeymap.enabled && editorTextFocus && !virtualWorkspace && editorLangId == 'latex'"
+},
+{
+    "key": "ctrl+j",
+    "command": "latex-workshop.synctexto"
+},
+{
+    "key": "ctrl+j",
+    "command": "latex-workshop.synctex",
+    "when": "editorTextFocus && !config.latex-workshop.bind.altKeymap.enabled && !virtualWorkspace && editorLangId == 'latex'"
+},
+{
+    "key": "ctrl+alt+j",
+    "command": "-latex-workshop.synctex",
+    "when": "editorTextFocus && !config.latex-workshop.bind.altKeymap.enabled && !virtualWorkspace && editorLangId == 'latex'"
+},
 
 ]
-
