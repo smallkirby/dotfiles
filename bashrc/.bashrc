@@ -149,10 +149,10 @@ alias objdump="objdump -M intel"
 
 # pwn
 alias strace="strace -v -s 90"
-alias rp++="rp-lin-x64"
+alias rp++="rp-lin-x86_64 --colors"
 alias upwndbg="gdb -q -nx -ix $HOME/.gdbinit.pwn"
 alias pwndbg="sudo gdb -q -nx -ix $HOME/.gdbinit.pwn"
-alias gdb="gdb -q"
+alias gdb="sudo gdb -q -nx -ix $HOME/.gdbinit"
 
 # stap
 STAP_HOME=$HOME/systemtap/build/bin
@@ -198,6 +198,9 @@ alias postman="$HOME/Postman/Postman"
 alias tracecompass="$HOME/trace-compass/tracecompass"
 alias xtop="xtop 2>~/xtop-error"
 alias less="less -R"
+alias x="xclip -sel clip"
+alias pd="perldoc"
+alias withenv="env \$(cat .env | xargs)"
 
 ### END Alias #############################################
 
