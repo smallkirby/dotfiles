@@ -160,7 +160,7 @@ alias stap="sudo $STAP_HOME/stap"
 alias sstap="sudo strace $STAP_HOME/stap"
 
 # ghidra
-export GHIDRA_LATEST=ghidra_9.3_DEV
+export GHIDRA_LATEST=ghidra_10.1.2_PUBLIC
 export GHIDRA_INSTALL_DIR=/usr/local/$GHIDRA_LATEST
 alias ghidra="sh $GHIDRA_INSTALL_DIR/ghidraRun"
 
@@ -191,6 +191,12 @@ alias bp="nautilus --browser $HOME/Pictures"
 
 # terminal
 alias newterm="gnome-terminal --working-directory=$PWD"
+
+# k8s
+alias k="kubectl"
+source <(kubectl completion bash)
+alias ktx="kubectx"
+alias kns="kubens"
 
 # others
 alias astudio="$HOME/android-studio/bin/studio.sh"
@@ -244,13 +250,36 @@ eval "$(rbenv init -)"
 source "$HOME/.cargo/env"
 . "$HOME/.cargo/env"
 
+# Go
+export PATH="$PATH:$(go env GOPATH)/bin"
+
+# Perl
+export PATH="$HOME/.plenv/bin:$PATH"
+eval "$(plenv init -)"
+
 ### END runscripts ########################################
 
 ### BASH  #################################################
 
 set -o vi # run bash in vi mode
 
-### END BASH  #############################################
+### END BASH ##############################################
+
+### MISC ##################################################
+
+# Fly.io
+export FLYCTL_INSTALL="$HOME/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+# bash_completion for aliased commands
+source $HOME/complete-alias/complete_alias
+
+## Each completions follows:
+  complete -F _complete_alias k
+  complete -F _complete_alias kns
+  complete -F _complete_alias ktx
+
+### END MISC ##############################################
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
