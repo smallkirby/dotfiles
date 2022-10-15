@@ -182,6 +182,12 @@ alias bp="nautilus --browser $HOME/Pictures"
 # terminal
 alias newterm="gnome-terminal --working-directory=$PWD"
 
+# k8s
+alias k="kubectl"
+source <(kubectl completion bash)
+alias ktx="kubectx"
+alias kns="kubens"
+
 # others
 alias astudio="$HOME/android-studio/bin/studio.sh"
 alias postman="$HOME/Postman/Postman"
@@ -247,6 +253,15 @@ set -o vi # run bash in vi mode
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ### END BREW #############################################
+
+# bash_completion for aliased commands
+export COMPAL_AUTO_UNMASK=1
+source $HOME/complete-alias/complete_alias
+
+## Each completions follows:
+  complete -F _complete_alias k
+  complete -F _complete_alias kns
+  complete -F _complete_alias ktx
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
