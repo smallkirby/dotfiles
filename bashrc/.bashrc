@@ -2,6 +2,15 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Colors
+export C_RST="\e[0m"
+export C_GREEN="\e[32m"
+export C_LGREEN="\e[92m"
+export C_RED="\e[31m"
+export C_PURPLE="\e[35m"
+export C_BOLD="\e[1m"
+export C_UL="\e[4m"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -60,30 +69,30 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-function save_state() {
-    export ps1prev=$?
-}
-
 function show_git_branch() {
     local branch="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/' | sed s'/^ (//g' | sed s'/)$//g')"
     if [ -z "$branch" ]; then
-        echo -ne "\033[0;35m(nogit)\\e[0m"
+        echo -ne "$C_PURPLE$C_BOLD(nogit)$C_RST"
     else
-        echo -ne "\033[0;35m[$branch]\\e[0m"
+        echo -ne "$C_PURPLE$C_BOLD[$branch]$C_RST"
     fi
 }
 
 function show_prev_status() {
     if [ $1 == 0 ]; then
-        echo -ne "\\e[0;92m"
+        echo -ne "<$C_LGREEN$1$C_RST>"
     else
-        echo -ne "\\e[0;91m"
+        echo -ne "<$C_RED$C_BOLD$1$C_RST>"
     fi
-    echo -ne "<$1>\\e[0m"
 }
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]: \[\033[01;35m\]\t \d\[\033[00m\]: $(save_state; show_git_branch; echo ""; show_prev_status $ps1prev) \$ '
+    PS1="${debian_chroot:+($debian_chroot)}\[$C_GREEN\]\u@\h\[$C_RST\]: \[$C_BOLD$C_UL$C_PURPLE\]\w\[$C_RST\] : \[\e[37m\]\D{%T} \[$C_RST\] \$(\\
+        PS1PREV=\$?; \
+        show_git_branch; \
+        echo ""; \
+        show_prev_status \$PS1PREV; \
+    ) ${C_BOLD}\$${C_RST} "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
