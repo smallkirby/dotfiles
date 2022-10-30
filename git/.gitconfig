@@ -1,0 +1,19 @@
+[user]
+	name = smallkirby
+	email = ssmallkirby@gmail.com
+	signingkey = ADD55187E2CFF630
+[push]
+  defalt = matching
+[init]
+	defaultBranch = master
+[commit]
+	gpgsign = true
+[alias]
+  commit = commit -s -S
+  st = status --short --branch --untracked-files=all
+  unstage = restore --staged
+  sw = switch
+  ch = switch
+  d = diff
+  hist = log -p
+
