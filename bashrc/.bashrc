@@ -244,16 +244,6 @@ export CCACHE_DIR=$HOME/.ccache
 # lysithea
 export PATH=$PATH:$HOME/lysithea
 
-# git
-git() {
-  if [ "$1" = "commit" ]; then
-    shift
-    command git commit -S -s "$@"
-  else
-    command git "$@"
-  fi
-}
-
 # others
 tmux="TERM=xterm-256color tmux"
 
