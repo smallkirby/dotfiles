@@ -1,0 +1,7 @@
+IdeaVIM
+com.github.copilot
+com.github.setial
+com.intellij.nativeDebug
+com.vincentp.gruvbox-theme
+org.jetbrains.kotlin
+siosio.kodkod

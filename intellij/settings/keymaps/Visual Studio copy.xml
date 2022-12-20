@@ -1,0 +1,66 @@
+<keymap version="1" name="Visual Studio copy" parent="Visual Studio">
+  <action id="ChangesView.GroupBy.Directory" />
+  <action id="CompareTwoFiles" />
+  <action id="Diff.ShowDiff" />
+  <action id="EditorDuplicate" />
+  <action id="ExportSettings">
+    <keyboard-shortcut first-keystroke="shift ctrl e" />
+  </action>
+  <action id="FileChooser.GotoDesktop" />
+  <action id="FileChooser.TogglePathShowing" />
+  <action id="GotoDeclaration">
+    <keyboard-shortcut first-keystroke="ctrl d" />
+  </action>
+  <action id="GotoFile">
+    <keyboard-shortcut first-keystroke="shift ctrl t" />
+    <keyboard-shortcut first-keystroke="ctrl p" />
+  </action>
+  <action id="GotoLine" />
+  <action id="GotoRow" />
+  <action id="GotoSymbol">
+    <keyboard-shortcut first-keystroke="ctrl alt p" />
+  </action>
+  <action id="GuiDesigner.Duplicate" />
+  <action id="MoveTabDown">
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="e" />
+  </action>
+  <action id="MoveTabRight">
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="o" />
+  </action>
+  <action id="NextSplitter">
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="l" />
+  </action>
+  <action id="NextTab" />
+  <action id="PrevSplitter">
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="h" />
+  </action>
+  <action id="PreviousTab" />
+  <action id="Print" />
+  <action id="RecentLocations" />
+  <action id="Refactorings.QuickListPopupAction" />
+  <action id="RenameElement">
+    <keyboard-shortcut first-keystroke="shift ctrl r" />
+  </action>
+  <action id="RunDashboard.CopyConfiguration" />
+  <action id="SaveAll" />
+  <action id="SendEOF" />
+  <action id="ServiceView.GroupByServiceGroups" />
+  <action id="ShowSettings">
+    <keyboard-shortcut first-keystroke="shift ctrl s" />
+  </action>
+  <action id="Switcher">
+    <keyboard-shortcut first-keystroke="ctrl tab" />
+    <keyboard-shortcut first-keystroke="shift ctrl tab" />
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="s" />
+  </action>
+  <action id="TodoViewGroupByShowPackages" />
+  <action id="UnsplitAll">
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="q" />
+  </action>
+  <action id="UsageGrouping.Directory" />
+  <action id="UsageGrouping.Package" />
+  <action id="XDebugger.AttachToProcess" />
+  <action id="XDebugger.CopyWatch" />
+  <action id="openAssertEqualsDiff" />
+  <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleStrikethroughAction" />
+</keymap>
