@@ -179,7 +179,7 @@ alias jython="java -jar $JYTHON_HOME/jython-standalone-2.7.2.jar"
 
 # gcc
 alias gcc="ccache gcc"
-alias make='make CC="ccache gcc"'
+alias make='mold -run make CC="ccache gcc"'
 
 # journalctl
 alias jlog="journalctl -b --all --catalog --no-pager" # current boot only
