@@ -98,6 +98,16 @@ let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_autoclose_preview_window_after_insertion = 1
 set splitbelow
 
+if !exists('g:vimpager')
+  let g:vimpager = {}
+endif
+
+if !exists('g:less')
+  let g:less     = {}
+endif
+
+let g:less.enabled = 0
+
 " PLUGIN
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
