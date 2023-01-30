@@ -17,3 +17,8 @@
   hist = log -p
   sync = fetch --all
 
+[core]
+  pager = less
+
+[pager]
+  show = vimpager
