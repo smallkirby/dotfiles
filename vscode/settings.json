@@ -1,0 +1,174 @@
+{
+  /********  editor / vim    ****************/
+  "editor.wordWrap": "off",
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "all",
+  "editor.fontSize": 12,
+  "editor.cursorStyle": "line",
+  "editor.lineNumbers": "on",
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.inlineSuggest.enabled": true,
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "/home/wataru/.vimrc",
+  "terminal.integrated.fontSize": 13,
+  "vim.useSystemClipboard":true,
+  "vim.hlsearch": true,
+  "vim.easymotion": true,
+  "vim.visualstar": true,
+  "vim.useCtrlKeys": true,
+  "window.zoomLevel": 1,
+
+  /******** General ***********************/
+  "explorer.confirmDragAndDrop": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.colorTheme": "Gruvbox Dark Medium",
+  "code-runner.runInTerminal": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "bookmarks.saveBookmarksInProject": true,
+  "bookmarks.treeview.visible": true,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "java.semanticHighlighting.enabled": true,
+  "latex-workshop.view.pdf.viewer": "tab",
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+
+  /*********  Git  ***********************/
+  "git.enableCommitSigning": true,
+  "git.alwaysSignOff": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": true,
+    "c": true
+  },
+  "sync.gist": "1f525cf141dd1b32b4d63b4aeea24428",
+  "gitlens.mode.active": "zen",
+  "git.openRepositoryInParentFolders": "never",
+  "githubPullRequests.pullBranch": "never",
+
+  /*********  Lang ***********************/
+  // C
+  "clangd.path": "/usr/bin/clangd",
+  "clangd.arguments": ["-log=verbose", "-pretty", "--background-index"],
+  "C_Cpp.intelliSenseEngine": "Enabled",
+  "C_Cpp.updateChannel": "Insiders",
+  "C_Cpp.autocompleteAddParentheses": true,
+  "C_Cpp.default.cppStandard": "c++20",
+  "C_Cpp.addNodeAddonIncludePaths": true,
+  "C_Cpp.debugShortcut": true,
+  "C_Cpp.default.intelliSenseMode": "clang-x64",
+  "C_Cpp.default.compilerPath": "/usr/bin/clang++",
+  "C_Cpp.loggingLevel": "Debug",
+  "clangd.detectExtensionConflicts": false,
+  "C_Cpp.formatting": "clangFormat",
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+
+  // Python
+  "python.venvFolders": [
+    "${workspaceFolder}/back/.venv"
+  ],
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.extraPaths": [
+    "lib",
+    "modules"
+  ],
+
+  // JS / TS
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[jsonc]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Perl
+  "perl.perlCmd": "${env:HOME}/.plenv/shims/perl",
+
+  // Crystal
+  "crystal-lang.completion": true,
+  "crystal-lang.implementations": true,
+
+  // Rust
+  "rust-analyzer.cargo.allFeatures": true,
+
+  // other
+  "html.format.indentInnerHtml": true,
+
+  /*********  Markdown  *******************/
+  "markdown-preview-enhanced.codeBlockTheme": "github.css",
+  "markdown-preview-enhanced.previewTheme": "github-dark.css",
+
+  /******** Auto-close Tag ****************/
+  "auto-close-tag.SublimeText3Mode": true,
+  "auto-close-tag.enableAutoCloseTag": true,
+  "auto-close-tag.enableAutoCloseSelfClosingTag": true,
+  "auto-close-tag.activationOnLanguage": [
+      "xml",
+      "php",
+      "blade",
+      "ejs",
+      "jinja",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "plaintext",
+      "markdown",
+      "vue",
+      "liquid",
+      "erb",
+      "lang-cfml",
+      "cfml",
+      "HTML (Eex)"
+  ],
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "html.suggest.html5": true,
+  "html.suggest.angular1": false,
+  "html.suggest.ionic": true,
+
+  /*****************  Terminal  ******************/
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.explorerKind": "external",
+  "terminal.external.linuxExec": "gnome-terminal",
+  "terminal.integrated.altClickMovesCursor": false,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "underline",
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.focusActiveEditorGroup"
+  ],
+  "terminal.integrated.sendKeybindingsToShell": true,
+  "terminal.integrated.enablePersistentSessions": false,
+
+  /******** Misc ****************/
+  "bracketPairColorizer.depreciation-notice": false,
+  "vs-kubernetes": {
+    "vs-kubernetes.ignore-recommendations": true,
+    "vs-kubernetes.minikube-show-information-expiration": "2023-05-11T08:43:33.973Z"
+  }
+}
