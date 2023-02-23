@@ -80,18 +80,18 @@ function show_git_branch() {
 
 function show_prev_status() {
     if [ $1 == 0 ]; then
-        echo -ne "<$C_LGREEN$1$C_RST>"
+      echo -ne "<$C_LGREEN$1$C_RST>"
     else
-        echo -ne "<$C_RED$C_BOLD$1$C_RST>"
+      echo -ne "<$C_RED$C_BOLD$1$C_RST>"
     fi
 }
 
 if [ "$color_prompt" = yes ]; then
-    PS1="${debian_chroot:+($debian_chroot)}\[$C_GREEN\]\u@\h\[$C_RST\]: \[$C_BOLD$C_UL$C_PURPLE\]\w\[$C_RST\] : \[\e[37m\]\D{%T} \[$C_RST\] \$(\\
-        PS1PREV=\$?; \
-        show_git_branch; \
-        echo ""; \
-        show_prev_status \$PS1PREV; \
+  PS1="${debian_chroot:+($debian_chroot)}\[$C_GREEN\]\u@\h\[$C_RST\]: \[$C_BOLD$C_UL$C_PURPLE\]\w\[$C_RST\] : \[\e[37m\]\D{%T} \[$C_RST\] \$(\\
+      PS1PREV=\$?; \
+      show_git_branch; \
+      echo ""; \
+      show_prev_status \$PS1PREV; \
     ) ${C_BOLD}\$${C_RST} "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -163,10 +163,10 @@ alias upwndbg="gdb -q -nx -ix $HOME/.gdbinit.pwn"
 alias pwndbg="sudo gdb -q -nx -ix $HOME/.gdbinit.pwn"
 alias gdb="sudo gdb -q -nx -ix $HOME/.gdbinit"
 
-# stap
-STAP_HOME=$HOME/systemtap/build/bin
-alias stap="sudo $STAP_HOME/stap"
-alias sstap="sudo strace $STAP_HOME/stap"
+## stap
+#STAP_HOME=$HOME/systemtap/build/bin
+#alias stap="sudo $STAP_HOME/stap"
+#alias sstap="sudo strace $STAP_HOME/stap"
 
 # ghidra
 export GHIDRA_LATEST=ghidra_10.1.2_PUBLIC
@@ -178,8 +178,8 @@ export JYTHON_HOME=$HOME/jython
 alias jython="java -jar $JYTHON_HOME/jython-standalone-2.7.2.jar"
 
 # gcc
-alias gcc="ccache gcc"
-alias make='mold -run make CC="ccache gcc"'
+alias cgcc="ccache gcc"
+alias mmake='mold -run make CC="ccache gcc"'
 
 # journalctl
 alias jlog="journalctl -b --all --catalog --no-pager" # current boot only
@@ -195,8 +195,8 @@ alias s='export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMM
 alias us='export PROMPT_COMMAND=""'
 
 # nautilus
-alias bd="nautilus --browser $(pwd)"
-alias bp="nautilus --browser $HOME/Pictures"
+alias bd="nautilus --browser $(pwd) >/dev/null 2>/dev/null &"
+alias bp="nautilus --browser $HOME/Pictures >/dev/null 2>/dev/null &"
 
 # terminal
 alias newterm="gnome-terminal --working-directory=$PWD"
@@ -216,6 +216,7 @@ alias less="less -R"
 alias x="xclip -sel clip"
 alias pd="perldoc"
 alias withenv="env \$(cat .env | xargs)"
+alias tmux="TERM=xterm-256color tmux"
 
 ### END Alias #############################################
 
@@ -244,8 +245,8 @@ export CCACHE_DIR=$HOME/.ccache
 # lysithea
 export PATH=$PATH:$HOME/lysithea
 
-# others
-tmux="TERM=xterm-256color tmux"
+# gradle
+export PATH=$PATH:/opt/gradle/gradle-7.6/bin
 
 ### END set up PATH and envvars ###########################
 
@@ -259,26 +260,41 @@ eval "$(rbenv init -)"
 source "$HOME/.cargo/env"
 . "$HOME/.cargo/env"
 
-# Go
-export PATH="$PATH:$(go env GOPATH)/bin"
-
-# Perl
-export PATH="$HOME/.plenv/bin:$PATH"
-eval "$(plenv init -)"
-
 ### END runscripts ########################################
 
 ### BASH  #################################################
 
 set -o vi # run bash in vi mode
 
-### END BASH ##############################################
+### END BASH  #############################################
 
-### MISC ##################################################
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+git() {
+  if [ "$1" = "commit" ]; then
+    shift
+    command git co -S -s "$@"
+  else
+    command git "$@"
+  fi
+}
+
+# Wasmer
+export WASMER_DIR="$(HOME)/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 # Fly.io
 export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+# Go
+export PATH="$PATH:$(go env GOPATH)/bin"
+
+# Perl
+export PATH="$HOME/.plenv/bin:$PATH"
+eval "$(plenv init -)"
 
 # bash_completion for aliased commands
 source $HOME/complete-alias/complete_alias
@@ -287,13 +303,6 @@ source $HOME/complete-alias/complete_alias
   complete -F _complete_alias k
   complete -F _complete_alias kns
   complete -F _complete_alias ktx
-
-### END MISC ##############################################
-
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 
 : ' ## Tips ##
 
@@ -311,4 +320,3 @@ export SDKMAN_DIR="$HOME/.sdkman"
     eg: \less
 
 '
-
