@@ -19,6 +19,7 @@
   #co = commit -s -S # default command cannot be overridden
   co = commit
   sync = fetch --all
+  now = rev-parse --verify HEAD --short
 
 [core]
   pager = less
