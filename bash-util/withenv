@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#
+# Load .env file in a current dir, then execute a command with these envvars.
+#
+# Note that .env file is evaluated as bash script.
+# so that you can use envvar like `$HOME` in .env.
+#
+
+set -e
+
+if [ -z "$1" ]; then
+  echo "Usage: withenv <command>"
+  exit 1
+fi
+
+if [ ! -f ./.env ]; then
+  echo "No .env file found"
+  exit 1
+fi
+
+env $(eval "echo \"$(cat ./.env)\"" | xargs) "$@"
+
