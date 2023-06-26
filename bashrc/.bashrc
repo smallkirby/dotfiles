@@ -163,6 +163,7 @@ alias upwndbg="gdb -q -nx -ix $HOME/.gdbinit.pwn"
 alias pwndbg="sudo gdb -q -nx -ix $HOME/.gdbinit.pwn"
 alias gef="sudo gdb -q -nx -ix $HOME/.gdbinit-gef.py"
 alias gdb="sudo gdb -q -nx -ix $HOME/.gdbinit"
+alias try="$HOME/try/try"
 
 ## stap
 #STAP_HOME=$HOME/systemtap/build/bin
