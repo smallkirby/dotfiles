@@ -161,7 +161,7 @@ alias strace="strace -v -s 90"
 alias rp++="rp-lin-x86_64 --colors"
 alias upwndbg="gdb -q -nx -ix $HOME/.gdbinit.pwn"
 alias pwndbg="sudo gdb -q -nx -ix $HOME/.gdbinit.pwn"
-alias gef="sudo gdb -q -nx -ix $HOME/.gdbinit-gef.py"
+alias gef="sudo GEF_RC=$HOME/.gef.rc gdb -q -nx -ix $HOME/.gdbinit-gef"
 alias gdb="sudo gdb -q -nx -ix $HOME/.gdbinit"
 alias try="$HOME/try/try"
 

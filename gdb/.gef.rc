@@ -1,0 +1,4 @@
+[context]
+clear_screen = False
+layout = legend regs code args source memory stack threads trace extra
+

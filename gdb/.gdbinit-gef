@@ -1,0 +1,24 @@
+set auto-load safe-path /
+set disassembly-flavor intel
+set print pretty on
+set print elements 0
+set history save off
+
+define hook-kill
+  set confirm off
+end
+
+define hook-quit
+  set confirm off
+end
+
+define conn
+  target remote:1234
+end
+
+define ii
+  x/10i 
+end
+
+source /home/wataru/.gdbinit-gef.py
+
