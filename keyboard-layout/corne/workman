@@ -16,8 +16,8 @@
     "",
     "",
     "",
-    "",
-    "{KC_LCTL,KC_LALT}"
+    "{KC_LCTL,KC_G}",
+    "{KC_LCTL,KC_F}"
   ],
   "layers": [
     [
@@ -78,11 +78,11 @@
       "KC_5",
       "KC_6",
       "KC_LCTL",
-      "MACRO00",
+      "KC_COLN",
+      "KC_SCLN",
       "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO",
+      "MACRO15",
+      "MACRO14",
       "KC_LSFT",
       "KC_1",
       "KC_NO",
