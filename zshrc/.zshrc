@@ -189,7 +189,7 @@ source /usr/share/doc/fzf/examples/completion.zsh # installed by apt
 
 ######################################################
 
-"Tips
+: "Tips
 - Ctrl + T: fuzzy tile content viewer (bat required)
 "
 
