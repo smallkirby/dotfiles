@@ -153,10 +153,43 @@ zplug "zsh-users/zsh-completions"
 zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
+zplug "junegunn/fzf", from:gh-r, as:command, rename-to:fzf
 
 zplug load
 
 ### p10k  #############################################
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+### fzf ###############################################
+
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+git-hist() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
+}
+
+source /usr/share/doc/fzf/examples/key-bindings.zsh # installed by apt
+source /usr/share/doc/fzf/examples/completion.zsh # installed by apt
+
+######################################################
+
+"Tips
+- Ctrl + T: fuzzy tile content viewer (bat required)
+"
 
