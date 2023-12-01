@@ -185,11 +185,19 @@ FZF-EOF"
 }
 
 source /usr/share/doc/fzf/examples/key-bindings.zsh # installed by apt
-source /usr/share/doc/fzf/examples/completion.zsh # installed by apt
+
+### fzf ###############################################
+
+eval "$(navi widget zsh)"
+
+### completion #######################################
+
+fpath=($HOME/.zsh $fpath)
 
 ######################################################
 
 : "Tips
 - Ctrl + T: fuzzy tile content viewer (bat required)
 "
+
 
