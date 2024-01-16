@@ -1,0 +1,6 @@
+# karabiner configuration for Workman layout
+
+```sh
+cp ./karabiner.json ~/.config/karabiner/karabiner.json
+```
+
