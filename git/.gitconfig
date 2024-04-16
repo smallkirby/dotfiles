@@ -1,7 +1,7 @@
 [user]
 	name = smallkirby
 	email = ssmallkirby@gmail.com
-	#signingkey = ADD55187E2CFF630
+	signingkey = ADD55187E2CFF630
 [push]
   defalt = matching
   autoSetupRemote = true
@@ -16,14 +16,25 @@
   ch = switch
   d = diff
   hist = log -p
-  #co = commit -s -S # default command cannot be overridden
-  co = commit
+  co = commit -s -S # default command cannot be overridden
   sync = fetch --all
   now = rev-parse --verify HEAD --short
   forget = rm --cached
+  cmp = diff --no-index
 
 [core]
-  pager = less
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
 
 [pager]
   show = vimpager
+
+[delta]
+  navigate = true
+  side-by-side = true
+
+[diff]
+  colorMoved = default
+
