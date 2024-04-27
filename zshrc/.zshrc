@@ -15,6 +15,8 @@ HISTFILE=~/.zsh_history
 # Use modern completion system
 autoload -Uz compinit
 compinit
+autoload -U +X bashcompinit
+bashcompinit
 
 bindkey -v
 
@@ -104,6 +106,13 @@ alias try="$HOME/try/try"
 
 ### set up PATH and envvars ###############################
 
+# fly
+export PATH="$HOME/.fly/bin:$PATH"
+
+# pipx
+export PATH="$PATH:/home/wataru/.local/bin"
+eval "$(register-python-argcomplete pipx)"
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -128,6 +137,11 @@ export PATH=$PATH:$HOME/lysithea
 
 # gradle
 export PATH=$PATH:/opt/gradle/gradle-7.6/bin
+
+# ZVM
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"
 
 # others
 tmux="TERM=xterm-256color tmux"
@@ -199,5 +213,4 @@ fpath=($HOME/.zsh $fpath)
 : "Tips
 - Ctrl + T: fuzzy tile content viewer (bat required)
 "
-
 
