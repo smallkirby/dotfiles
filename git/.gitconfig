@@ -21,6 +21,8 @@
   now = rev-parse --verify HEAD --short
   forget = rm --cached
   cmp = diff --no-index
+  pf = push --force-with-lease --force-if-includes
+  push-f = pf
 
 [core]
   pager = delta
