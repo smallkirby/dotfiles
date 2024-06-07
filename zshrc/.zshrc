@@ -1,42 +1,28 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+### Completion ########################################
 
-autoload -Uz promptinit
-promptinit
+# Use Git completion script
+zstyle ':completion:*:*:git:*' script $HOME/.zsh/git-completion.bash
+# Use menu style completion
+zstyle ':completion:*' menu select=2
+# Complete also dot files
+setopt globdots
 
-setopt histignorealldups sharehistory
+### History ###########################################
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh_history
+HISTFILE=$HOME/.zsh_history
+setopt histignorealldups sharehistory
 
-# Use modern completion system
-autoload -Uz compinit
-compinit
-autoload -U +X bashcompinit
-bashcompinit
+### User configuration ################################
 
-bindkey -v
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' menu select=long
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
-
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+# Preferred editor for local and remote sessions
+export EDITOR='vim'
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
 
 ### Alias #############################################
 
@@ -155,26 +141,6 @@ eval "$(rbenv init -)"
 source "$HOME/.cargo/env"
 . "$HOME/.cargo/env"
 
-### zplug  #############################################
-
-source $HOME/.zplug/init.zsh
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-
-zplug "mafredri/zsh-async"
-zplug romkatv/powerlevel10k, as:theme, depth:1
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "chrissicool/zsh-256color"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "junegunn/fzf", from:gh-r, as:command, rename-to:fzf
-
-zplug load
-
-### p10k  #############################################
-
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 ### fzf ###############################################
 
 export FZF_CTRL_T_OPTS="
@@ -200,17 +166,49 @@ FZF-EOF"
 
 source /usr/share/doc/fzf/examples/key-bindings.zsh # installed by apt
 
-### fzf ###############################################
+### completion #######################################
+
+fpath=($HOME/.zsh $HOME/pure $fpath)
+
+### navi ###############################################
 
 eval "$(navi widget zsh)"
 
-### completion #######################################
+### inputrc ###############################################
 
-fpath=($HOME/.zsh $fpath)
+set editing-mode vi
+
+### Added by Zinit's installer ########################
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+zinit ice depth"1" 
+zinit light romkatv/powerlevel10k
+source $HOME/.p10k.zsh
+zinit light zsh-users/zsh-completions
+#zinit light jeffreytse/zsh-vi-mode
 
 ######################################################
 
 : "Tips
 - Ctrl + T: fuzzy tile content viewer (bat required)
 "
+
 
