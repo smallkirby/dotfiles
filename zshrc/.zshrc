@@ -203,12 +203,11 @@ zinit ice depth"1"
 zinit light romkatv/powerlevel10k
 source $HOME/.p10k.zsh
 zinit light zsh-users/zsh-completions
-#zinit light jeffreytse/zsh-vi-mode
+zinit light jeffreytse/zsh-vi-mode
 
 ######################################################
 
 : "Tips
 - Ctrl + T: fuzzy tile content viewer (bat required)
 "
-
 
