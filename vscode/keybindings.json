@@ -344,6 +344,14 @@
     {
         "key": "ctrl+h",
         "command": "editor.action.showDefinitionPreviewHover"
+    },
+    {
+        "key": "ctrl+k e",
+        "command": "-workbench.files.action.focusOpenEditorsView",
+        "when": "workbench.explorer.openEditorsView.active"
+    },
+    {
+        "key": "ctrl+g a",
+        "command": "workbench.files.action.focusFilesExplorer"
     }
 ]
-

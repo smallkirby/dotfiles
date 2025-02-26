@@ -3,35 +3,33 @@
 	email = ssmallkirby@gmail.com
 	signingkey = ADD55187E2CFF630
 [push]
-  defalt = matching
   autoSetupRemote = true
+  default = matching
 [init]
 	defaultBranch = master
 [commit]
 	gpgsign = true
 [alias]
-  st = status --short --branch --untracked-files=all
-  unstage = restore --staged
-  sw = switch
-  ch = switch
-  d = diff
-  hist = log -p
-  co = commit -s -S # default command cannot be overridden
-  sync = fetch --all
-  now = rev-parse --verify HEAD --short
-  forget = rm --cached
   cmp = diff --no-index
-  pf = push --force-with-lease --force-if-includes
+  ch = switch
+  co = commit -s -S
+  d = diff
+  forget = rm --cached
+  hist = log -p
+  now = rev-parse --verify HEAD --short
+  nowb = rev-parse --abbrev-ref HEAD
   push-f = pf
+  pf = push --force-with-lease --force-if-includes
+  st = status --short --branch --untracked-files=all
+  sync = fetch --all
+  sw = switch
+  unstage = restore --staged
 
 [core]
   pager = delta
 
 [interactive]
   diffFilter = delta --color-only
-
-[pager]
-  show = vimpager
 
 [delta]
   navigate = true
@@ -40,3 +38,8 @@
 [diff]
   colorMoved = default
 
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+	smudge = git-lfs smudge -- %f
+	required = true
